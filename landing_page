@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Responsive Landing Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Make the header and footer take up the full width of the screen */
+header, footer {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+}
+
+/* Style the navigation links in the header */
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav ul li {
+  margin-right: 1em;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Center the main content on the page */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+/* Style the sections within the main content */
+section {
+  width: 80%;
+  padding: 2em;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+/* Style the form in the contact section */
+section#contact form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+section#contact form label,
+section#contact form input,
+section#contact form textarea {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+section#contact form input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 0.75em;
+  border: none;
+}
+
+/* Use media queries to make the page responsive */
+@media (max-width: 768px) {
+  /* Stack the sections vertically on small screens */
+  section {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="about">
+        <h2>About Us</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna id blandit congue, ipsum velit dapibus risus, euismod bibendum sapien magna at urna.</p>
+      </section>
+      <section id="features">
+        <h2>Features</h2>
+        <ul>
+          <li>Feature 1</li>
+          <li>Feature 2</li>
+          <li>Feature 3</li>
+        </ul>
+      </section>
+      <section id="pricing">
+        <h2>Pricing</h2>
+        <ul>
+          <li>Basic: $10/month</li>
+          <li>Pro: $20/month</li>
+          <li>Enterprise: $50/month</li>
+        </ul>
+      </section>
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message"></textarea>
+          <button id="send-button">Send</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright © 2023 My Company</p>
+    </footer>
+    <script>
+      // Get the form element
+const form = document.querySelector("section#contact form");
+
+// Add a submit event listener to the form
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // prevent the default form submission behavior
+  
+  // Get the form input values
+  const name = form.elements.name.value;
+  const email = form.elements.email.value;
+  const message = form.elements.message.value;
+  
+  // Check if any of the input fields are empty
+  if (!name || !email || !message) {
+    alert("Please fill out all fields.");
+    return;
+  }
+  
+  // Send the form data to the server (this is where you would use an AJAX request)
+  // for example 
+  // const xhr = new XMLHttpRequest();
+  // xhr.open("POST", "https://your-server.com/send-form-data");
+  // xhr.setRequestHeader("Content-Type", "application/json");
+  // xhr.send(JSON.stringify({ name, email, message }));
+  
+  // Show a message to the user
+  alert("Thank you for your message. We will get back to you as soon as possible.");
+});
+   //send button listener
+      var sendButton = document.getElementById("send-button");
+  sendButton.addEventListener("click", function() {
+    // Access form data and send it to server
+  });
+      sendButton.addEventListener("click", function() {
+    var data = getFormData(); // function to get form data
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/submit-form");
+    xhr.send(data);
+  });
+    </script>
+  </body>
+</html>
